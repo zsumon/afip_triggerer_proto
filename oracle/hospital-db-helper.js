@@ -10,8 +10,8 @@ async function run() {
         connection = await oracledb.getConnection(dbConfig);
         console.log('Connection was successful!');
 
-        const dat = await connection.execute('SELECT * FROM REPORTS');
-        console.log(dat);
+        // const dat = await connection.execute('SELECT * FROM REPORTS');
+       // console.log(dat);
         
 
     } catch (err) {

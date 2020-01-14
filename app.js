@@ -2,14 +2,14 @@ const express = require("express");
 const bodyParser = require("body-parser");
 
 const myOracle = require('./oracle/hospital-db-helper');
-const PORT = process.env.PORT || 9988;
+const PORT = process.env.PORT || 7700;
 const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-app.post('/report_updated', function (req, res) {
+app.post('/reports_updated', function (req, res) {
 
     console.log('new report updated:', req.body);
     const voucherId = req.body.voucher_id;
