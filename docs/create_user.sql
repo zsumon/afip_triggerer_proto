@@ -1,16 +1,18 @@
-alter session set "_ORACLE_SCRIPT"=true; 
-grant connect to userName identified by password;
+alter session set "_ORACLE_SCRIPT"=true;
 
--- GRANT CREATE SESSION GRANT ANY PRIVILEGE TO dume;
-GRANT UNLIMITED TABLESPACE TO dume;
+CREATE USER APPDEV IDENTIFIED BY pass;
+GRANT CONNECT,RESOURCE TO APPDEV;
+GRANT CREATE SESSION, GRANT ANY PRIVILEGE TO APPDEV;
+GRANT UNLIMITED TABLESPACE TO APPDEV;
+GRANT EXECUTE on schema.procedure TO APPDEV; -- to execute a method
+GRANT SELECT,UPDATE,INSERT ON schema.table TO APPDEV;
 
-GRANT
-  SELECT,
-  INSERT,
-  UPDATE,
-  DELETE
-ON
---   schema.reports
-   reports
-TO
-  dume;
+-- https://stackoverflow.com/a/22293352
+
+
+CREATE USER books_admin IDENTIFIED BY MyPassword;
+GRANT CONNECT TO books_admin;
+GRANT CONNECT, RESOURCE, DBA TO books_admin;
+GRANT CREATE SESSION, GRANT ANY PRIVILEGE TO books_admin;
+GRANT UNLIMITED TABLESPACE TO books_admin;
+GRANT SELECT, INSERT, UPDATE, DELETE ON schema.books TO books_admin;
