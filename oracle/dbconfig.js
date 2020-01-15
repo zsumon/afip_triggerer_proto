@@ -1,5 +1,5 @@
 module.exports = {
-    user: process.env.NODE_ORACLEDB_USER || "system",
+    user: process.env.NODE_ORACLEDB_USER || "dume",
 
     // Get the password from the environment variable
     // NODE_ORACLEDB_PASSWORD.  The password could also be a hard coded
