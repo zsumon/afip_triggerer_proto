@@ -17,7 +17,7 @@ async function makeHtml(voucherId, reportType) {
         const html = await ejs.renderFile(reportTemplateLocation, { model: false }).then(output => output);
         //create file and write html
         await writeFile(outputFilePath, html, "utf8");
-        console.log('Made HTML');
+        // console.log('Made HTML');
     } catch (error) {
         console.log(error);
     }
