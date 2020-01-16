@@ -21,13 +21,11 @@ GRANT SELECT, INSERT, UPDATE, DELETE ON schema.books TO books_admin;
 
 
 
-<<<<<<< HEAD
 -- GRANT SELECT, UPDATE, INSERT ON afip.tsh TO appdev;
 
 -- GRANT SELECT, UPDATE, INSERT ON afip.bilirubin TO appdev;
 
 -- GRANT SELECT, UPDATE, INSERT ON afip.patient_info TO appdev;
-=======
 -- Allow Network Call
 -- Grant the connect and resolve privileges for host www.us.oracle.com to SCOTT.
 
@@ -87,4 +85,3 @@ BEGIN
 END;
 /
 COMMIT;
->>>>>>> e0fb8ed6882765e6f903e79b13f47fc5b5bc02ab
