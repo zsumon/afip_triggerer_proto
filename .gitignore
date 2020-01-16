@@ -1,5 +1,4 @@
-
-/all-generated-reports
+all-generated-reports/
 
 ### Code ###
 .vscode/*
