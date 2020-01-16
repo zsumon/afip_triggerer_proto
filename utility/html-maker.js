@@ -14,7 +14,7 @@ async function makeHtml(voucherId, reportType) {
         const reportTemplateLocation = path.join(__dirname, './report-template/default.ejs');
         // console.log(reportTemplateLocation);
 
-        const html = await ejs.renderFile(reportTemplateLocation, { model: false }).then(output => output);
+        const html = await ejs.renderFile(reportTemplateLocation, { name: voucherId }, { model: false }).then(output => output);
         //create file and write html
         await writeFile(outputFilePath, html, "utf8");
         // console.log('Made HTML');

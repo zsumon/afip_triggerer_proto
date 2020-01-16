@@ -66,7 +66,7 @@
         .patient_info,
         .report_info,
         .result_info {
-            width: 17.5cm;
+            width: 17.6cm;
         }
 
         /*.patient_info{
@@ -85,7 +85,7 @@
         }*/
 
         .delivered_by {
-            width: 7.5cm;
+            width: 7.844cm;
             margin: 20px 16px 0px 0px;
             position: absolute;
             top: 26.8cm;
@@ -93,7 +93,7 @@
         }
 
         .checked_by {
-            width: 7.5cm;
+            width: 7.844cm;
             margin: 20px 25px 0px 16px;
             position: absolute;
             top: 26.8cm;
@@ -114,8 +114,6 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
 
-    <!-- Bootstrap CSS -->
-
     <title>Report_template</title>
 </head>
 
@@ -130,56 +128,58 @@
             </div>
 
             <div class="myContainer patient_info">
-                <table style="width:7.5cm; display: inline">
+                <table style="width:100%; display: inline">
                     <tr>
                         <td>Patient's Name</td>
                         <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
-                        <td>Name</td>
-                    </tr>
-                    <tr>
-                        <td>Patient's Phone</td>
-                        <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
-                        <td>01234567891</td>
-                    </tr>
-                    <tr>
-                        <td>Patient's Email</td>
-                        <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
-                        <td>dummymail@gmail.com</td>
-                    </tr>
-                    <tr>
-                        <td>Patient's Age</td>
-                        <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
-                        <td>24 years</td>
-                    </tr>
-                    <tr>
-                        <td>Patient's Sex</td>
-                        <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
-                        <td>Female</td>
-                    </tr>
-                </table>
+                        <td><%= name %></td>
 
-                <table style="width:7.5cm; display: inline; margin-left: 20px">
-                    <tr>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </td>
                         <td>ID No</td>
                         <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
                         <td>V123456</td>
                     </tr>
                     <tr>
+                        <td>Patient's Phone</td>
+                        <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
+                        <td>01234567891</td>
+
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </td>
                         <td>Date Received</td>
                         <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
                         <td>07/01/2020</td>
                     </tr>
                     <tr>
+                        <td>Patient's Email</td>
+                        <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
+                        <td>dummymail@gmail.com</td>
+
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </td>
                         <td>Date Delivered</td>
                         <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
                         <td>09/01/2020</td>
                     </tr>
                     <tr>
+                        <td>Patient's Age</td>
+                        <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
+                        <td>24 years</td>
+
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </td>
                         <td>Referred By</td>
                         <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
                         <td>Self</td>
                     </tr>
                     <tr>
+                        <td>Patient's Sex</td>
+                        <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
+                        <td>Female</td>
+
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </td>
                         <td>Specimen</td>
                         <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
                         <td>Blood</td>
