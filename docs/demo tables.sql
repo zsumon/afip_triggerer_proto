@@ -1,5 +1,10 @@
---CREATE OR REPLACE TYPE TEST_ARRAY IS VARRAY (40) OF VARCHAR2 (100); 
---CREATE OR REPLACE TYPE specimen_array IS VARRAY (10) OF VARCHAR2 (50); 
+CREATE OR REPLACE TYPE test_array IS
+    VARRAY(40) OF VARCHAR2(100);
+/
+CREATE OR REPLACE TYPE specimen_array IS
+    VARRAY(10) OF VARCHAR2(50);
+/
+
 CREATE TABLE patient_info (
     invoice_id       VARCHAR2(50),
     hospital_id      VARCHAR2(50),
@@ -14,6 +19,16 @@ CREATE TABLE patient_info (
     bm_number        VARCHAR2(50),
     available_tests  test_array
 );
-
-CREATE TABLE BILIRUBIN(report_id VARCHAR2(20),invoice_id VARCHAR2(50),test_result VARCHAR2(500)); 
-CREATE TABLE TSH(report_id VARCHAR2(20),invoice_id VARCHAR2(50),test_result VARCHAR2(500)); 
+/
+CREATE TABLE bilirubin (
+    report_id    VARCHAR2(20),
+    invoice_id   VARCHAR2(50),
+    test_result  VARCHAR2(500)
+);
+/
+CREATE TABLE tsh (
+    report_id    VARCHAR2(20),
+    invoice_id   VARCHAR2(50),
+    test_result  VARCHAR2(500)
+);
+/

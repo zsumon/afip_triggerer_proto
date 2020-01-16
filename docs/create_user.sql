@@ -16,3 +16,11 @@ GRANT CONNECT, RESOURCE, DBA TO books_admin;
 GRANT CREATE SESSION, GRANT ANY PRIVILEGE TO books_admin;
 GRANT UNLIMITED TABLESPACE TO books_admin;
 GRANT SELECT, INSERT, UPDATE, DELETE ON schema.books TO books_admin;
+
+
+
+-- GRANT SELECT, UPDATE, INSERT ON afip.tsh TO appdev;
+
+-- GRANT SELECT, UPDATE, INSERT ON afip.bilirubin TO appdev;
+
+-- GRANT SELECT, UPDATE, INSERT ON afip.patient_info TO appdev;
