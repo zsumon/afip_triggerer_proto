@@ -28,6 +28,4 @@ async function makeHtml(postData) {
     }
 }
 
-makeHtml('i101', 'TSH');
-
 module.exports = { makeHtml };
