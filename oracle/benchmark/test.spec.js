@@ -53,7 +53,6 @@ async function insertPatients(conn, number) {
         await insertReport(conn, invoice_id);
         //allInvoices.push(invoice_id);
     }
-
 }
 
 async function insertReport(conn, invoiceId) {

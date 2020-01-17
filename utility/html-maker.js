@@ -9,12 +9,12 @@ const readFile = util.promisify(fs.readFile);
 const writeFile = util.promisify(fs.writeFile);
 
 async function makeHtml(reqBody) {
-    //  await makeOutputDirFirst();
+    
     const voucherId = reqBody.invoice_id, reportType = reqBody.test_type, testResult = reqBody.test_result;
     const outputFilePath = path.join(__dirname, "../all-generated-reports/html-reports/" + voucherId + "_" + reportType + ".html");
 
     await mkdir(path.join(__dirname, "../all-generated-reports/html-reports/"), { recursive: true });
-    await mkdir(path.join(__dirname, "../all-generated-reports/html-reports/"), { recursive: true });
+    await mkdir(path.join(__dirname, "../all-generated-reports/pdf-reports/"), { recursive: true });
 
     // const html = await ejs.renderFile(reportTemplateLocation, { name: voucherId }, { model: false }).then(output => output);
     //create file and write html
