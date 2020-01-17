@@ -13,9 +13,15 @@ app.set('view engine', 'ejs');
 
 app.post('/reports_updated', async function (req, res) {
     console.log('New report updated:', req.body);
-    pdfMaker.makePDFromHTML(req.body.invoice_id, req.body.test_type);
+    try {
+        await pdfMaker.makePDFromHTML(req.body.invoice_id, req.body.test_type);
+        res.send('success');
+    } catch (error) {
+        console.log(error);
+        res.send('error' + error);
+    }
     // we'll save it to local storage, cloud storage adn also get a cloud link of that file..
-    res.send('success');
+
 });
 
 app.listen(PORT, function () {

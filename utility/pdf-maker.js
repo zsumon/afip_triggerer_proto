@@ -1,12 +1,12 @@
 var fs = require('fs');
-var pdf = require('html-pdf');
+var pdf = require('html-pdf'); // arbitary read-write issue 
 const path = require('path');
 const htmkMaker = require('./html-maker');
 
 async function makePDFromHTML(voucherId, reportType) {
     // makae html first then pdf..
     await htmkMaker.makeHtml(voucherId, reportType);
-
+    // await mkdir("../all-generated-reports/html-reports/", {recursive: true});
     const htmlFilePath = path.join(__dirname, "../all-generated-reports/html-reports/" + voucherId + "_" + reportType + ".html");
     const html = fs.readFileSync(htmlFilePath, 'utf8');
 

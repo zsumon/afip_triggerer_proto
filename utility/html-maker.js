@@ -14,6 +14,10 @@ async function makeHtml(voucherId, reportType) {
         const reportTemplateLocation = path.join(__dirname, './report-template/default.ejs');
         // console.log(reportTemplateLocation);
 
+        await mkdir("../all-generated-reports/html-reports/", { recursive: true });
+        await mkdir("../all-generated-reports/pdf-reports/", { recursive: true }); //also ensures pdf file location
+
+
         const html = await ejs.renderFile(reportTemplateLocation, { name: voucherId }, { model: false }).then(output => output);
         //create file and write html
         await writeFile(outputFilePath, html, "utf8");
@@ -22,5 +26,7 @@ async function makeHtml(voucherId, reportType) {
         console.log(error);
     }
 }
+
+makeHtml('i101', 'TSH');
 
 module.exports = { makeHtml };
