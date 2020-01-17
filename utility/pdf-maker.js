@@ -7,10 +7,9 @@ async function makePDFromHTML(postData) {
     const voucherId = postData.invoice_id, reportType = postData.test_type, testResult = postData.test_result;
     // makae html first then pdf..
     await htmkMaker.makeHtml(postData);
-    // await mkdir("../all-generated-reports/html-reports/", {recursive: true});
+
     const htmlFilePath = path.join(__dirname, "../all-generated-reports/html-reports/" + voucherId + "_" + reportType + ".html");
     const html = fs.readFileSync(htmlFilePath, 'utf8');
-
     const outputPDFFilePath = path.join(__dirname, "../all-generated-reports/pdf-reports/" + voucherId + "_" + reportType + ".pdf");
 
     const options = { format: 'A4' };
@@ -19,6 +18,8 @@ async function makePDFromHTML(postData) {
         // console.log(res);
     });
 }
+
+// makePDFromHTML({ invoice_id: 'inv88', test_type: 'TSH' });
 
 // var phantom = require('phantom');
 
@@ -32,6 +33,7 @@ async function makePDFromHTML(postData) {
 //         });
 //     });
 // });
+
 
 
 module.exports = { makePDFromHTML };

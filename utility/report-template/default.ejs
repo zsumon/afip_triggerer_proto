@@ -2,25 +2,28 @@
 <html lang="en">
 
 <head>
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
     <!-- style sheet -->
     <style>
         body {
             width: 21cm;
-            height: 29.65cm;
+            height: 29.66cm;
             margin: 0px auto;
+            font-family: 'M PLUS Rounded 1c', sans-serif;
+            font-style: normal;
             /* change the margins as you want them to be. */
         }
 
         #h3 {
             padding: 0px 0px 0px 40px;
-            font-size: 1.5rem;
+            font-size: 1.55rem;
             margin: 10px 0px 0px 0px;
         }
 
         #h6 {
             padding: 0px 0px 0px 40px;
-            font-size: .95rem;
-            margin: 10px 0px 0px 0px;
+            font-size: 1rem;
+            margin: 4px 0px 0px 0px;
         }
 
         #wrap {
@@ -32,7 +35,7 @@
         #left_col {
             float: left;
             width: 3rem !important;
-            height: 29.65cm;
+            height: 29.66cm;
             color: white;
             background-color: #3B393C;
             border-radius: 0px 16px 16px 0px;
@@ -43,7 +46,7 @@
             float: left;
             margin: 50px 20px 0px 0px;
             width: 723px;
-            height: 5rem;
+            height: 5.3rem;
             background-color: #3B393C;
             color: white;
             border-radius: 0px 0px 16px 0px;
@@ -68,21 +71,6 @@
         .result_info {
             width: 17.6cm;
         }
-
-        /*.patient_info{
-            position: absolute;
-            top: 5.8cm;
-        }
-
-        .report_info{
-            position: absolute;
-            top: 26.8cm;
-        }
-
-        .result_info{
-            position: absolute;
-            top: 26.8cm;
-        }*/
 
         .delivered_by {
             width: 7.844cm;
@@ -118,117 +106,128 @@
 </head>
 
 <body>
-    <div style="height:  29.65cm; background-color: white;">
+<div style="height:  29.65cm; background-color: white;">
 
-        <div id="wrap">
-            <div id="left_col"></div>
-            <div id="right_col">
-                <p id="h3">Armed forced Institution of Pahology</p>
-                <p id="h6">Location: Shaheed Sharani, Dhaka Phone: 01769-016616 </p>
-            </div>
-
-            <div class="myContainer patient_info">
-                <table style="width:100%; display: inline">
-                    <tr>
-                        <td>Patient's Name</td>
-                        <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
-                        <td><%= name %></td>
-
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        </td>
-                        <td>ID No</td>
-                        <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
-                        <td>V123456</td>
-                    </tr>
-                    <tr>
-                        <td>Patient's Phone</td>
-                        <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
-                        <td>01234567891</td>
-
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        </td>
-                        <td>Date Received</td>
-                        <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
-                        <td>07/01/2020</td>
-                    </tr>
-                    <tr>
-                        <td>Patient's Email</td>
-                        <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
-                        <td>dummymail@gmail.com</td>
-
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        </td>
-                        <td>Date Delivered</td>
-                        <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
-                        <td>09/01/2020</td>
-                    </tr>
-                    <tr>
-                        <td>Patient's Age</td>
-                        <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
-                        <td>24 years</td>
-
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        </td>
-                        <td>Referred By</td>
-                        <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
-                        <td>Self</td>
-                    </tr>
-                    <tr>
-                        <td>Patient's Sex</td>
-                        <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
-                        <td>Female</td>
-
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        </td>
-                        <td>Specimen</td>
-                        <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
-                        <td>Blood</td>
-                    </tr>
-                </table>
-            </div>
-
-            <div class="myContainer report_info">
-                <table style="width:100%;">
-                    <tr>
-                        <td>Report Type</td>
-                        <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
-                        <td>Serum Bilirubin</td>
-                    </tr>
-                    <tr>
-                        <td>Relevant Estimator</td>
-                        <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
-                        <td>Siemens Dimension EXL200/Beck man Coulter Au-480 Analyzer</td>
-                    </tr>
-                </table>
-            </div>
-
-            <div class="myContainer result_info">
-                <table style="width:100%;">
-                    <tr>
-                        <th>Parameter</th>
-                        <th>Result</th>
-                        <th>Reference value</th>
-                    </tr>
-                    <tr>
-                        <td>Serum Bilirubin(Total)</td>
-                        <td>1.31 mg/dl</td>
-                        <td>Adult: 0.3-1.0, Neonate: 0.6-10.50</td>
-                    </tr>
-                </table>
-            </div>
-
-            <div class="myContainer delivered_by">
-                Delivered By : E-Med System
-            </div>
-
-            <div class="myContainer checked_by">
-                Checked By : E-Med authority
-            </div>
-
+    <div id="wrap">
+        <div id="left_col"></div>
+        <div id="right_col">
+            <p id="h3">Armed forced Institution of Pahology</p>
+            <p id="h6">Location: Shaheed Sharani, Dhaka Phone: 01769-016616 </p>
         </div>
 
+        <div class="myContainer patient_info">
+            <table style="width:100%; display: inline">
+                <tr>
+                    <td>Patient's Name</td>
+                    <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
+                    <td><%= %></td>
 
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </td>
+                    <td>ID No</td>
+                    <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
+                    <td><%= %></td>
+                </tr>
+                <tr>
+                    <td>Patient's Phone</td>
+                    <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
+                    <td><%= %></td>
+
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </td>
+                    <td>Date Received</td>
+                    <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
+                    <td><%= %></td>
+                </tr>
+                <tr>
+                    <td>Patient's Email</td>
+                    <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
+                    <td><%= %></td>
+
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </td>
+                    <td>Date Delivered</td>
+                    <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
+                    <td><%= %></td>
+                </tr>
+                <tr>
+                    <td>Patient's Age</td>
+                    <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
+                    <td><%= %></td>
+
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </td>
+                    <td>Referred By</td>
+                    <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
+                    <td>Self</td>
+                </tr>
+                <tr>
+                    <td>Patient's Sex</td>
+                    <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
+                    <td><%= %></td>
+
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </td>
+                    <td>Specimen</td>
+                    <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
+                    <td>Blood</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="myContainer report_info">
+            <table style="width:100%;">
+                <tr>
+                    <td>Report Type</td>
+                    <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
+                    <td>Thyroid Stimulating Hormone or TSH</td>
+                </tr>
+                <tr>
+                    <td>Relevant Estimator</td>
+                    <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
+                    <td>Thyroid Analyzer</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="myContainer result_info">
+            <table style="width:100%;">
+                <tr>
+                    <th>Parameter</th>
+                    <th>Result</th>
+                    <th>Reference value</th>
+                </tr>
+                <tr>
+                    <td>TSH</td>
+                    <td><%= %> uIU/mL</td>
+                    <td>0.450 - 4.500 uIU/mL</td>
+                </tr>
+
+                <tr>
+                    <td>T4, Free(Direct)</td>
+                    <td><%= %> ng/dL</td>
+                    <td>0.82 - 1.77 ng/dL</td>
+                </tr>
+
+                <tr>
+                    <td>T3, Free</td>
+                    <td><%= %> pg/mL</td>
+                    <td>2.0 - 4.4 pg/mL</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="myContainer delivered_by">
+            Delivered By : E-Med System
+        </div>
+
+        <div class="myContainer checked_by">
+            Checked By : E-Med authority
+        </div>
     </div>
+
+
+</div>
 </body>
 
 </html>

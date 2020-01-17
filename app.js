@@ -25,7 +25,7 @@ app.post('/reports_updated', async function (req, res) {
 });
 
 app.listen(PORT, function () {
-    console.log("Started on PORT: " + PORT);
+    console.log("Started on port: " + PORT);
 });
 
 myOracle.run();
