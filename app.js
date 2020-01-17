@@ -14,7 +14,7 @@ app.set('view engine', 'ejs');
 app.post('/reports_updated', async function (req, res) {
     console.log('New report updated:', req.body);
     try {
-        await pdfMaker.makePDFromHTML(req.body.invoice_id, req.body.test_type);
+        await pdfMaker.makePDFromHTML(req.body); /*.invoice_id, req.body.test_type, request.test_result*/
         res.send('success');
     } catch (error) {
         console.log(error);

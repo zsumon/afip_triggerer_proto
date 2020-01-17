@@ -8,8 +8,9 @@ const mkdir = util.promisify(fs.mkdir);
 const readFile = util.promisify(fs.readFile);
 const writeFile = util.promisify(fs.writeFile);
 
-async function makeHtml(voucherId, reportType) {
+async function makeHtml(postData) {
     try {
+        const voucherId = postData.invoice_id, reportType = postData.test_type, testResult = postData.test_result;
         const outputFilePath = path.join(__dirname, "../all-generated-reports/html-reports/" + voucherId + "_" + reportType + ".html");
         const reportTemplateLocation = path.join(__dirname, './report-template/default.ejs');
         // console.log(reportTemplateLocation);
