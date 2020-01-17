@@ -8,9 +8,9 @@ const mkdir = util.promisify(fs.mkdir);
 const readFile = util.promisify(fs.readFile);
 const writeFile = util.promisify(fs.writeFile);
 
-async function makeHtml(postData) {
+async function makeHtml(reqBody) {
     //  await makeOutputDirFirst();
-    const voucherId = postData.invoice_id, reportType = postData.test_type, testResult = postData.test_result;
+    const voucherId = reqBody.invoice_id, reportType = reqBody.test_type, testResult = reqBody.test_result;
     const outputFilePath = path.join(__dirname, "../all-generated-reports/html-reports/" + voucherId + "_" + reportType + ".html");
 
     await mkdir(path.join(__dirname, "../all-generated-reports/html-reports/"), { recursive: true });
@@ -18,7 +18,7 @@ async function makeHtml(postData) {
 
     // const html = await ejs.renderFile(reportTemplateLocation, { name: voucherId }, { model: false }).then(output => output);
     //create file and write html
-    await handleEachReportTpe(postData, outputFilePath);
+    await handleEachReportTpe(reqBody, outputFilePath);
 }
 
 async function handleEachReportTpe(reqBody, outputFilePath) {

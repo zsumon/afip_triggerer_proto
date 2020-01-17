@@ -15,7 +15,6 @@
     "express": "^4.17.1",
     "gmail-send": "^1.8.10",
     "html-pdf": "^2.2.0",
-    "oracledb": "^4.1.0",
-    "phantom": "^6.3.0"
+    "oracledb": "^4.1.0"
   }
 }
