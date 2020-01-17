@@ -9,36 +9,44 @@ const readFile = util.promisify(fs.readFile);
 const writeFile = util.promisify(fs.writeFile);
 
 async function makeHtml(postData) {
-    try {
-        //  await makeOutputDirFirst();
-        const voucherId = postData.invoice_id, reportType = postData.test_type, testResult = postData.test_result;
-        const outputFilePath = path.join(__dirname, "../all-generated-reports/html-reports/" + voucherId + "_" + reportType + ".html");
-        const reportTemplateLocation = path.join(__dirname, './report-template/default.ejs');
-        console.log(reportTemplateLocation);
-        // await mkdir("./all-generated-reports/");
-        await mkdir(path.join(__dirname, "../all-generated-reports/html-reports/"), { recursive: true });
-        await mkdir(path.join(__dirname, "../all-generated-reports/html-reports/"), { recursive: true });
+    //  await makeOutputDirFirst();
+    const voucherId = postData.invoice_id, reportType = postData.test_type, testResult = postData.test_result;
+    const outputFilePath = path.join(__dirname, "../all-generated-reports/html-reports/" + voucherId + "_" + reportType + ".html");
 
-        const html = await ejs.renderFile(reportTemplateLocation, { name: voucherId }, { model: false }).then(output => output);
-        //create file and write html
-        await writeFile(outputFilePath, html, "utf8");
-        // console.log('Made HTML');
-    } catch (error) {
-        console.log(error);
-    }
+    await mkdir(path.join(__dirname, "../all-generated-reports/html-reports/"), { recursive: true });
+    await mkdir(path.join(__dirname, "../all-generated-reports/html-reports/"), { recursive: true });
+
+    // const html = await ejs.renderFile(reportTemplateLocation, { name: voucherId }, { model: false }).then(output => output);
+    //create file and write html
+    await handleEachReportTpe(postData, outputFilePath);
 }
 
-async function makeOutputDirFirst() {
-    try {
-        console.log('making dirs...');
+async function handleEachReportTpe(reqBody, outputFilePath) {
+    const reportType = reqBody.test_type;
+    const templateLocation = path.join(__dirname, './report-template/' + reportType + '.ejs');
+    if (reportType === 'TSH') {
+        const vals = reqBody.test_result.split(',');
+        // console.log('vals: =>', vals);
 
-        await mkdir("./all-generated-reports/");
-        await mkdir("./all-generated-reports/html-reports/", { recursive: true });
-        await mkdir("./all-generated-reports/pdf-reports/", { recursive: true }); //also ensures pdf file location  
-        console.log('all dir ok');
+        const date1 = (new Date()).toLocaleDateString("en-US");
+        const date2 = (new Date()).toLocaleDateString("en-US");
 
-    } catch (error) {
-        console.log('cant: ', error);
+        const html = await ejs.renderFile
+            (templateLocation, {
+                patName: reqBody.patient_name, invoiceId: reqBody.invoice_id, patPhone: reqBody.patient_phone, dateRec: date1, dateDel: date2,
+                patEmail: reqBody.patient_email, patAge: reqBody.patient_age, refBy: 'Self', patGender: reqBody.patient_gender, val1: vals[0], val2: vals[1], val3: vals[2]
+            }, { model: false }
+            ).then(output => output);
+
+        try {
+            await writeFile(outputFilePath, html, "utf8");
+            // console.log('success! ', 'tsh data injected');
+            // success 
+        } catch (error) {
+            console.log(error);
+            throw error;
+        }
+    } else if (reportType === 'BILIRUBIN') {
 
     }
 }
