@@ -27,7 +27,8 @@ async function getSample() {
 async function uploadReport(postData, pdfPath, fileSize) {
 
     const patientPhone = "+88" + postData.patient_phone;
-    const user = await getOrCreateUser(patientPhone);
+    const patEmail = postData.patient_email;
+    const user = await getOrCreateUser(patEmail);
 
     // console.log('User is: =>', user);
     const fileRef = db.collection('files').doc();
@@ -50,25 +51,17 @@ async function uploadReport(postData, pdfPath, fileSize) {
 
     const resp = await fileRef.set(fileData);
     // console.log(resp);
-
-    // notify android users..
-
     console.log('full report upload success');
 }
 
-
-async function notifyAndroidUsers(token) {
-
-}
-
-async function getOrCreateUser(phone) {
+async function getOrCreateUser(email) {
     // const users = await auth.listUsers();
     // console.log(users);
 
-    const user = await auth.getUserByPhoneNumber(phone);
+    const user = await auth.getUserByPhoneNumber(email);
     if (user) return user;
     //crete new user..
-    return await auth.createUser({ phoneNumber: phone });
+    return await auth.createUser({ email: email, password: '123456' });
 }
 
 async function uploadFile(fullFilePath) {
