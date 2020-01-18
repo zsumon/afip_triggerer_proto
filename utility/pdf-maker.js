@@ -45,25 +45,25 @@ async function makePDFromHTML(postData) {
 // another way coluld be serving html file and then capturing with phantom js
 // same stylling issues...
 
-var phantom = require('phantom');
-phantom.create().then(function (ph) {
-    ph.createPage().then(function (page) {
-        page.open("http://127.0.0.1:54333/me.html").then(function (status) {
+// var phantom = require('phantom');
+// phantom.create().then(function (ph) {
+//     ph.createPage().then(function (page) {
+//         page.open("http://127.0.0.1:54333/me.html").then(function (status) {
 
-            page.render('google.pdf', paperSize = {
-                width: '5in',
-                height: '7in',
-                margin: {
-                    top: '100px',
-                    left: '-200px'
-                }
-            }).then(function () {
-                console.log('Page Rendered');
-                ph.exit();
-            });
-        });
-    });
-});
+//             page.render('google.pdf', paperSize = {
+//                 width: '5in',
+//                 height: '7in',
+//                 margin: {
+//                     top: '100px',
+//                     left: '-200px'
+//                 }
+//             }).then(function () {
+//                 console.log('Page Rendered');
+//                 ph.exit();
+//             });
+//         });
+//     });
+// });
 
 
 
