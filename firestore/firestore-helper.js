@@ -49,6 +49,8 @@ async function uploadReport(postData, pdfPath, fileSize) {
         'test_result': postData.test_result
     };
 
+    console.log('Patient UID:', user.uid);
+
     const resp = await fileRef.set(fileData);
     // console.log(resp);
     console.log('full report upload success');
@@ -58,7 +60,7 @@ async function getOrCreateUser(email) {
     // const users = await auth.listUsers();
     // console.log(users);
 
-    const user = await auth.getUserByPhoneNumber(email);
+    const user = await auth.getUserByEmail(email);
     if (user) return user;
     //crete new user..
     return await auth.createUser({ email: email, password: '123456' });
