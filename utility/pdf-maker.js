@@ -1,39 +1,33 @@
 var fs = require('fs');
 const path = require('path');
 var conversion = require("phantom-html-to-pdf")(); // beautiful very high performant, not like dummy html-pdf  
-const htmkMaker = require('./html-maker');
+const htmlMaker = require('./html-maker');
 const firestoreHelper = require('../firestore/firestore-helper.js');
 
 
 async function makePDFromHTML(postData) {
-    const voucherId = postData.invoice_id, reportType = postData.test_type, testResult = postData.test_result;
-
+    const invoiceId = postData.invoice_id, reportType = postData.test_type, testResult = postData.test_result;
     // make html first then pdf..
-    await htmkMaker.makeHtml(postData);
+    await htmlMaker.makeHtml(postData);
 
-    const htmlFilePath = path.join(__dirname, "../all-generated-reports/html-reports/" + voucherId + "_" + reportType + ".html");
+    const htmlFilePath = path.join(__dirname, "../all-generated-reports/html-reports/" + invoiceId + "_" + reportType + ".html");
     const html = fs.readFileSync(htmlFilePath, 'utf8');
-    const outputPDFFilePath = path.join(__dirname, "../all-generated-reports/pdf-reports/" + voucherId + "_" + reportType + ".pdf");
-    // TODO --> Page size fix korte pare na
-
-    // var wkhtmltopdf = require('wkhtmltopdf');
-    // wkhtmltopdf(html, { output: outputPDFFilePath, pageSize: 'A5' });
-    // return;
-
+    const outputPDFFilePath = path.join(__dirname, "../all-generated-reports/pdf-reports/" + invoiceId + "_" + reportType + ".pdf");
 
     conversion({
         html: html,
-        // paperSize: {
-        //     format: 'A4',
-        //     orientation: 'portrait',
-        //     margin: { left: '0cm', right: '0cm', top: '0cm' },
-        // },
-        //  zoom: .50,
-        // paperSize: {
-        //     width: '1500px',
-        //     height: '1700px',
-        //     margin: '1cm'
-        // }
+        /* paperSize: {
+             format: 'A4',
+             orientation: 'portrait',
+             margin: { left: '0cm', right: '0cm', top: '0cm' },
+         },
+          zoom: .50,
+         paperSize: {
+             width: '1500px',
+             height: '1700px',
+             margin: '1cm'
+         }
+         */
     }, async function (err, pdf) {
         const outputPdfStream = fs.createWriteStream(outputPDFFilePath);
         //console.log(pdf.logs);
@@ -47,35 +41,13 @@ async function makePDFromHTML(postData) {
 
         if (err) console.log('failed' + '=>' + err);
         else console.log('pdf making success');
-        const fileSize = fs.statSync(outputPDFFilePath).size.toString();
-        await firestoreHelper.uploadReport(postData, 'all-generated-reports/pdf-reports/' + voucherId + '_' + reportType + '.pdf', fileSize);
 
+        const pdfLoc = 'all-generated-reports/pdf-reports/' + invoiceId + '_' + reportType + '.pdf';
+        const htmlLoc = 'all-generated-reports/html-reports/' + invoiceId + '_' + reportType + '.html';
+
+        await firestoreHelper.uploadReport(postData, pdfLoc, htmlLoc);
     });
 }
-
-// another way coluld be serving html file and then capturing with phantom js
-// same stylling issues...
-
-// var phantom = require('phantom');
-// phantom.create().then(function (ph) {
-//     ph.createPage().then(function (page) {
-//         page.open("http://127.0.0.1:54333/me.html").then(function (status) {
-
-//             page.render('google.pdf', paperSize = {
-//                 width: '5in',
-//                 height: '7in',
-//                 margin: {
-//                     top: '100px',
-//                     left: '-200px'
-//                 }
-//             }).then(function () {
-//                 console.log('Page Rendered');
-//                 ph.exit();
-//             });
-//         });
-//     });
-// });
-
 
 
 module.exports = { makePDFromHTML };

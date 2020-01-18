@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
+    <!-- style sheet -->
+    <style>
+        body,
+        html {
+            width: 21cm;
+            height: 29.66cm;
+            margin: 0px auto;
+            font-family: 'M PLUS Rounded 1c', sans-serif;
+            font-style: normal;
+            /* change the margins as you want them to be. */
+        }
+
+        #h3 {
+            padding: 0px 0px 0px 40px;
+            font-size: 1.55rem;
+            margin: 10px 0px 0px 0px;
+        }
+
+        #h6 {
+            padding: 0px 0px 0px 40px;
+            font-size: 1rem;
+            margin: 4px 0px 0px 0px;
+        }
+
+        #wrap {
+            width: 21cm;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        #left_col {
+            float: left;
+            width: 3rem !important;
+            height: 29.66cm;
+            color: white;
+            background-color: #3B393C;
+            border-radius: 0px 16px 16px 0px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        #right_col {
+            float: left;
+            margin: 50px 20px 0px 0px;
+            width: 723px;
+            height: 5.3rem;
+            background-color: #3B393C;
+            color: white;
+            border-radius: 0px 0px 16px 0px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        .myContainer {
+            border: 1px solid #CEEAFF;
+            /*#CEEAFF*/
+            border-radius: 12px;
+            float: left;
+            background-color: #F5FBFF;
+            margin: 20px 16px 0px 16px;
+            padding: 20px;
+            color: #707070;
+            font-size: 1rem;
+            font-style: normal;
+        }
+
+        .patient_info,
+        .report_info,
+        .result_info {
+            width: 17.6cm;
+        }
+
+        .delivered_by {
+            width: 7.844cm;
+            margin: 20px 16px 0px 0px;
+            position: absolute;
+            top: 26.8cm;
+            left: 1.7cm;
+        }
+
+        .checked_by {
+            width: 7.844cm;
+            margin: 20px 25px 0px 16px;
+            position: absolute;
+            top: 26.8cm;
+            left: 11cm;
+        }
+
+        tr {
+            line-height: 28px;
+        }
+
+        .result_info td,
+        .result_info th {
+            text-align: left !important;
+            vertical-align: baseline;
+        }
+    </style>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+
+    <title>Report_template</title>
+</head>
+
+<body>
+    <div style="height:  29.65cm; background-color: white;">
+
+        <div id="wrap">
+            <div id="left_col"></div>
+            <div id="right_col">
+                <p id="h3">Armed forced Institution of Pahology</p>
+                <p id="h6">Location: Shaheed Sharani, Dhaka Phone: 01769-016616 </p>
+            </div>
+
+            <div class="myContainer patient_info">
+                <table style="width:100%; display: inline">
+                    <tr>
+                        <td>Patient's Name</td>
+                        <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
+                        <td><%= patName %></td>
+
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </td>
+                        <td>Voucher ID</td>
+                        <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
+                        <td><%= invoiceId %></td>
+                    </tr>
+                    <tr>
+                        <td>Patient's Phone</td>
+                        <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
+                        <td><%= patPhone %></td>
+
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </td>
+                        <td>Date Received</td>
+                        <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
+                        <td><%= dateRec %></td>
+                    </tr>
+                    <tr>
+                        <td>Patient's Email</td>
+                        <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
+                        <td><%= patEmail %></td>
+
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </td>
+                        <td>Date Delivered</td>
+                        <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
+                        <td><%= dateDel %></td>
+                    </tr>
+                    <tr>
+                        <td>Patient's Age</td>
+                        <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
+                        <td><%= patAge %></td>
+
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </td>
+                        <td>Referred By</td>
+                        <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
+                        <td><%= refBy %></td>
+                    </tr>
+                    <tr>
+                        <td>Patient's Sex</td>
+                        <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
+                        <td><%= patGender %></td>
+
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </td>
+                        <td>Specimen</td>
+                        <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
+                        <td>Blood</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="myContainer report_info">
+                <table style="width:100%;">
+                    <tr>
+                        <td>Report Type</td>
+                        <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
+                        <td>Thyroid Stimulating Hormone or TSH</td>
+                    </tr>
+                    <tr>
+                        <td>Relevant Estimator</td>
+                        <td>&nbsp;&nbsp;: &nbsp;&nbsp;</td>
+                        <td>Thyroid Analyzer</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="myContainer result_info">
+                <table style="width:100%;">
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Result</th>
+                        <th>Reference value</th>
+                    </tr>
+                    <tr>
+                        <td>TSH</td>
+                        <td><%= val1 %> uIU/mL</td>
+                        <td>0.450 - 4.500 uIU/mL</td>
+                    </tr>
+
+                    <tr>
+                        <td>T4, Free(Direct)</td>
+                        <td><%= val2 %> ng/dL</td>
+                        <td>0.82 - 1.77 ng/dL</td>
+                    </tr>
+
+                    <tr>
+                        <td>T3, Free</td>
+                        <td><%= val3 %> pg/mL</td>
+                        <td>2.0 - 4.4 pg/mL</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="myContainer delivered_by">
+                Delivered By : E-Med System
+            </div>
+
+            <div class="myContainer checked_by">
+                Checked By : E-Med authority
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
