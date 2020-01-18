@@ -15,7 +15,8 @@ app.post('/reports_updated', async function (req, res) {
     //console.log('New report updated:', req.body);
     try {
         await pdfMaker.makePDFromHTML(req.body); /*.invoice_id, req.body.test_type, request.test_result*/
-        res.send('success');
+        res.send('Success');
+
     } catch (error) {
         console.log(error);
         res.send('error' + error);

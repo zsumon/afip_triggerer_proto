@@ -13,9 +13,11 @@
     "body-parser": "^1.19.0",
     "ejs": "^3.0.1",
     "express": "^4.17.1",
+    "firebase-admin": "^8.9.1",
     "gmail-send": "^1.8.10",
     "oracledb": "^4.1.0",
     "phantom": "^6.3.0",
-    "phantom-html-to-pdf": "^0.6.0"
+    "phantom-html-to-pdf": "^0.6.0",
+    "wkhtmltopdf": "^0.3.4"
   }
 }
