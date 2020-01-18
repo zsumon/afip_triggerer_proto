@@ -19,12 +19,13 @@ async function makePDFromHTML(postData) {
         // paperSize: {
         //     format: 'A4',
         //     orientation: 'portrait',
-        //     margin: { bottom: '0cm', left: '0.0', right: '0.0cm', top: '0.0cm' },
+        //     margin: { left: '0cm', right: '0cm', top: '0cm' },
         // },
+        //  zoom: .50,
         // paperSize: {
-        //     width: '500px',
-        //     height: '800px',
-        //     margin: '0px'
+        //     width: '1500px',
+        //     height: '1700px',
+        //     margin: '0cm'
         // }
     }, function (err, pdf) {
         const outputPdfStream = fs.createWriteStream(outputPDFFilePath);
@@ -42,12 +43,21 @@ async function makePDFromHTML(postData) {
 
 
 // another way coluld be serving html file and then capturing with phantom js
+// same stylling issues...
 
 var phantom = require('phantom');
 phantom.create().then(function (ph) {
     ph.createPage().then(function (page) {
-        page.open("https://dume-app.000webhostapp.com/tsh.html").then(function (status) {
-            page.render('google.pdf').then(function () {
+        page.open("http://127.0.0.1:54333/me.html").then(function (status) {
+
+            page.render('google.pdf', paperSize = {
+                width: '5in',
+                height: '7in',
+                margin: {
+                    top: '100px',
+                    left: '-200px'
+                }
+            }).then(function () {
                 console.log('Page Rendered');
                 ph.exit();
             });

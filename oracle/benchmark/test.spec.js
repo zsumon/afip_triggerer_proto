@@ -1,5 +1,6 @@
 const oracledb = require('oracledb');
 const dbConfig = require('../dbconfig.js');
+const now = require('performance-now');
 
 const allInvoices = [];
 
@@ -12,7 +13,7 @@ async function run() {
         connection = await oracledb.getConnection(dbConfig);
         console.log('Connection was successful!');
 
-        await insertPatients(connection, 10);
+        await insertPatients(connection, 1000);
         console.log('All Done');
 
     } catch (err) {
@@ -28,7 +29,15 @@ async function run() {
     }
 }
 
-run();
+(async () => {
+    const t0 = now();
+    await run();
+    const t1 = now();
+    console.log(t1 - t0);
+
+})()
+
+
 
 async function insertPatients(conn, number) {
     for (let i = 0; i < number; i++) {
