@@ -7,7 +7,7 @@ async function uploadLog(invoice_id, report_id, upload_date) {
         // Get a non-pooled connection
         connection = await oracledb.getConnection(dbConfig);
 
-        const sql = `INSERT INTO UPLOAD_LOGS(invoice_id,report_id,upload_date) VALUES('${invoice_id}','${report_id}',${upload_date})`;
+        // const sql = `INSERT INTO UPLOAD_LOGS(invoice_id,report_id,upload_date) VALUES('${invoice_id}','${report_id}',${upload_date})`;
         // console.log(sql);
 
         try {
