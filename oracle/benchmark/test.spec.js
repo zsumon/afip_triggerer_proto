@@ -13,9 +13,7 @@ async function run() {
         connection = await oracledb.getConnection(dbConfig);
         console.log('Connection was successful!');
 
-        for (let i = 0; i < 100; i++) {
-                
-        }
+        await insertPatients(connection, 1);
 
     } catch (err) {
         console.error(err);
@@ -29,6 +27,7 @@ async function run() {
         }
     }
 }
+
 run();
 
 async function insertPatients(conn, number) {
@@ -45,16 +44,20 @@ async function insertPatients(conn, number) {
         const patient_phone = (Math.random() * 1000000).toString().substr(0, 11);
         const patient_email = makeid(10) + '@' + 'gmail.com';
 
-        // TODO:
-        // const result = await connection.execute(
-        //     `INSERT INTO AFIP.PATIENT_INFO VALUES
-        //     (:invoice_id,:hospital_id,:patient_name,:patient_phone,:patient_gender,:patient_age',:reffered_by,:specimen,:date_receive,:date_delivery,:bm_number,:available_tests,:patient_email)`,
-        //     [invoice_id, 'afip', patient_name, patient_gender, patient_age, 'Self', 'Blood', null, null, 'bm_123', null, patient_email],
-        //     { autoCommit: true });
+        // TODO: file size & bulk  
+        // const sql = `INSERT INTO AFIP.PATIENT_INFO(:invoice_id,:hospital_id,:patient_name,:patient_phone,:patient_gender,:patient_age,:reffered_by,:specimen,:date_receive,:date_delivery,:bm_number,:available_tests,:patient_email) VALUES('${invoice_id}', 'afip', '${patient_name}', '${patient_gender}', '${patient_age}', 'Self', 'Blood', null, null, 'bm_123', null, '${patient_email}'],`
+        const result = await conn.execute(
+            `INSERT INTO afip.PATIENT_INFO VALUES (:invoice_id,:hospital_id,:patient_name,:patient_phone,:patient_gender,:patient_age,:reffered_by,:specimen,:date_receive,:date_delivery,:bm_number,:available_tests,:patient_email)`,
+            [invoice_id, 'afip', 'patient_name', '0123', 'Male', 20, 'Self', , null, null, 'bm_123', null, patient_email],
+            { autoCommit: true });
 
-        //  console.log(rres);
-        await insertReport(conn, invoice_id);
-        //allInvoices.push(invoice_id);
+
+        // const sql = `INSERT INTO PATIENT_INFO VALUES (invoice_id,hospital_id,patient_name,patient_phone,patient_gender,:patient_age,:reffered_by,:specimen,:date_receive,:date_delivery,:bm_number,:available_tests,:patient_email)`,
+
+        console.log(result);
+
+        // await insertReport(conn, invoice_id);
+
     }
 }
 
