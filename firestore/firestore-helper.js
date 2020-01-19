@@ -8,6 +8,8 @@ admin.initializeApp({
 
 const path = require('path');
 const mime = require('mime');
+const mailSender = require('../utility/mail-sender.js');
+
 
 const auth = admin.auth();
 const db = admin.firestore();
@@ -55,6 +57,10 @@ async function uploadReport(postData, pdfPath, htmlPath) {
             'test_result': postData.test_result
         };
         const resp = await fileRef.set(fileData);
+        let mailBody = 'Dear patient!\nYour Report is ready, here are download links:\n';
+        mailBody += fileUrl + '\n' + fileUrlHtml;
+        await mailSender.sendEmailAsync(patEmail, 'New report is ready', mailBody);
+
         console.log('full report upload success :)');
     } catch (error) {
         console.log(error);
