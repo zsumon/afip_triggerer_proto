@@ -9,6 +9,7 @@ admin.initializeApp({
 const path = require('path');
 const mime = require('mime');
 const mailSender = require('../utility/mail-sender.js');
+const logger = require('../upload-stat/stat.server.js');
 
 
 const auth = admin.auth();
@@ -57,11 +58,17 @@ async function uploadReport(postData, pdfPath, htmlPath) {
             'test_result': postData.test_result
         };
         const resp = await fileRef.set(fileData);
+        console.log('added to /files');
+
+
         let mailBody = 'Dear patient!\nYour Report is ready, here are download links:\n';
         mailBody += fileUrl + '\n' + fileUrlHtml;
         await mailSender.sendEmailAsync(patEmail, 'New report is ready', mailBody);
-
         console.log('full report upload success :)');
+
+        // add to LOGS
+        await logger.uploadLog(postData.invoice_id, postData.report_id, null);
+
     } catch (error) {
         console.log(error);
     }
