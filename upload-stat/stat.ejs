@@ -14,8 +14,18 @@
 </head>
 
 <body>
+    <div class="container mt-2">
+        <ul class="list-group">
+            <% for(let i=0; i < data.length; i++) { %>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                invoice id: <%=" " + data[i][0] %>
+                report id: <%=" " + data[i][1] %>
+                <span class="badge badge-primary badge-pill"> <%= data[i][2] %> </span>
+            </li>
+            <% } %>
+        </ul>
+    </div>
 
-    
 
 
 

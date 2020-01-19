@@ -3,6 +3,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const myOracle = require('./oracle/hospital-db-helper');
 const pdfMaker = require('./utility/pdf-maker');
+const statRouter = require('./routers/stat.router.js')
 
 const app = express();
 const PORT = process.env.PORT || 7700;
@@ -10,6 +11,8 @@ const PORT = process.env.PORT || 7700;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
+
+app.use('/stat', statRouter);
 
 app.post('/reports_updated', async function (req, res) {
     //console.log('New report updated:', req.body);

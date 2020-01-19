@@ -9,7 +9,7 @@ admin.initializeApp({
 const path = require('path');
 const mime = require('mime');
 const mailSender = require('../utility/mail-sender.js');
-const logger = require('../upload-stat/stat.server.js');
+const logger = require('../upload-stat/stat-service.js');
 
 
 const auth = admin.auth();
