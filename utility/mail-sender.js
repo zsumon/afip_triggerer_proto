@@ -1,7 +1,7 @@
 const sendEmailAsync = async (toUser, subject, text) => {
     var send = require('gmail-send')({
-        user: 'xumeinc@gmail.com',
-        pass: 'xumedume101430',
+        user: 'emed.uploader@gmail.com',
+        pass: 'emed123456',
         to: toUser,
         subject: subject,
         text: text,
