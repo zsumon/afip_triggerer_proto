@@ -13,8 +13,9 @@ async function run() {
         connection = await oracledb.getConnection(dbConfig);
         console.log('Connection was successful!');
 
-        await insertPatients(connection, 1000);
-        console.log('All Done');
+        // await insertPatients(connection, 10);
+        // await insertReport(connection,'v8671834');
+        // console.log('All Done');
 
     } catch (err) {
         console.error(err);
@@ -29,14 +30,7 @@ async function run() {
     }
 }
 
-(async () => {
-    const t0 = now();
-    await run();
-    const t1 = now();
-    console.log(t1 - t0);
-
-})()
-
+run();
 
 
 async function insertPatients(conn, number) {

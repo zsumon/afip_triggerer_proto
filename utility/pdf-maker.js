@@ -16,27 +16,18 @@ async function makePDFromHTML(postData) {
 
     conversion({
         html: html,
-        /* paperSize: {
-             format: 'A4',
-             orientation: 'portrait',
-             margin: { left: '0cm', right: '0cm', top: '0cm' },
-         },
-          zoom: .50,
-         paperSize: {
-             width: '1500px',
-             height: '1700px',
-             margin: '1cm'
-         }
-         */
+        paperSize: {
+            /*format: 'A4',
+            orientation: 'portrait',
+            margin: {bottom: '0cm', left: '0cm', right: '0cm', top: '0cm'},
+            headerHeight: '0cm', footerHeight: '0cm'*/
+            margin: '0cm',
+            headerHeight: '0cm',
+            footerHeight: '0cm',
+            format: 'A4'
+        },
     }, async function (err, pdf) {
         const outputPdfStream = fs.createWriteStream(outputPDFFilePath);
-        //console.log(pdf.logs);
-        //  console.log(pdf.numberOfPages);
-        // since pdf.stream is a node.js stream you can use it
-        // to save the pdf to a file (like in this example) or to
-        // respond an http request.
-
-        //now write upload to firestore
         pdf.stream.pipe(outputPdfStream);
 
         if (err) console.log('failed' + '=>' + err);
