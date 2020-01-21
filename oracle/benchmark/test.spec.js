@@ -13,7 +13,7 @@ async function run() {
         connection = await oracledb.getConnection(dbConfig);
         console.log('Connection was successful!');
 
-        await insertPatients(connection, 1);
+        await insertPatients(connection, 10);
 
     } catch (err) {
         console.error(err);
@@ -48,20 +48,19 @@ async function insertPatients(conn, number) {
         // const sql = `INSERT INTO AFIP.PATIENT_INFO(:invoice_id,:hospital_id,:patient_name,:patient_phone,:patient_gender,:patient_age,:reffered_by,:specimen,:date_receive,:date_delivery,:bm_number,:available_tests,:patient_email) VALUES('${invoice_id}', 'afip', '${patient_name}', '${patient_gender}', '${patient_age}', 'Self', 'Blood', null, null, 'bm_123', null, '${patient_email}'],`
         const result = await conn.execute(
             `INSERT INTO afip.PATIENT_INFO VALUES (:invoice_id,:hospital_id,:patient_name,:patient_phone,:patient_gender,:patient_age,:reffered_by,:specimen,:date_receive,:date_delivery,:bm_number,:available_tests,:patient_email)`,
-            [invoice_id, 'afip', 'patient_name', '0123', 'Male', 20, 'Self', , null, null, 'bm_123', null, patient_email],
+            [invoice_id, 'afip', patient_name, '0123', 'Male', '20', 'Self', , 'null', 'null', 'bm_123', 'null', patient_email],
             { autoCommit: true });
 
 
         // const sql = `INSERT INTO PATIENT_INFO VALUES (invoice_id,hospital_id,patient_name,patient_phone,patient_gender,:patient_age,:reffered_by,:specimen,:date_receive,:date_delivery,:bm_number,:available_tests,:patient_email)`,
 
         console.log(result);
-
-        // await insertReport(conn, invoice_id);
+        await insertReport(conn, invoice_id);
 
     }
 }
 
-async function insertReport(conn, invoiceId) {
+async function insertReport(connection, invoice_id) {
     const report_id = 'R' + makeid(6);
     const test_type = "TSH";
     const test_result = "1.06,2.80,3.85";
@@ -70,7 +69,7 @@ async function insertReport(conn, invoiceId) {
         `INSERT INTO upload_logs VALUES (:invoice_id, :report_id, :upload_date)`,
         [invoice_id, report_id, null],
         { autoCommit: true });
-    // console.log(sql);
+    console.log(result);
 }
 
 function makeid(length) {
