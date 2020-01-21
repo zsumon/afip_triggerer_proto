@@ -77,11 +77,15 @@ async function uploadReport(postData, pdfPath, htmlPath) {
 async function getOrCreateUser(email) {
     // const users = await auth.listUsers();
     // console.log(users);
+    try {
+        const user = await auth.getUserByEmail(email);
+        if (user) return user;
+    } catch (error) {
 
-    const user = await auth.getUserByEmail(email);
-    if (user) return user;
+    } finally {
+        return (await auth.createUser({ email: email, password: '123456' }));
+    }
     //crete new user..
-    return await auth.createUser({ email: email, password: '123456' });
 }
 
 async function uploadFile(fullFilePath) {
